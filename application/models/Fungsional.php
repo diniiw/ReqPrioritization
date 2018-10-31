@@ -89,4 +89,12 @@ class Fungsional extends Kebutuhan {
                 $this->db->update('fungsionals', $data);
         }
 
+        // public function waktuKumulatif(){
+        //         $this->db->select('waktu');
+        //         $this->db->from('fungsionals');
+        //         $this->db->order_by("prioritas", "DESC");
+        //         $query = $this->db->get();
+        //         return $query->result(); 
+        // }
+
 }

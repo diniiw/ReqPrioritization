@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col s12 ">
         <div class="card" style="padding:1%;">
-            <h7><b>Skala Perbandingan Kepentingan</b></h7>
+            <h7><b>Skala Perbandingan</b></h7>
             <table>
                 <thead>
                     <tr>
@@ -68,7 +68,7 @@
 
                         <br>
                         <div class="input-field col s3">
-                            <input name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" id="value" type="number" min="1" nax="5" class="validate" required>
+                            <input name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" id="value" type="number" min="1" max="5" class="validate" required>
                             <label for="value">Nilai Kepentingan</label>
                             <!-- <span class="helper-text" data-error="wrong" data-success="right">Helper text</span> -->
                         </div>

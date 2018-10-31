@@ -8,7 +8,7 @@ class TestingPrioritasiNF extends CI_Controller {
     // }
 
     private function stub_getJumlahKebutuhan(){
-        return 0;
+        return 3;
     }
 
     private function stub_getArrayID(){
@@ -24,7 +24,7 @@ class TestingPrioritasiNF extends CI_Controller {
     }
 
     private function stub_updatePrioritas($id, $prioritas){
-        return "Update prioritas kebutuhan id : " . $id . "dengan nilai prioritas : " . $prioritas . "<br>";
+        return "Update prioritas kebutuhan id : " . $id . " dengan nilai prioritas : " . $prioritas . "<br>";
     }
 
     private function stub_getAllDesc(){
@@ -42,7 +42,7 @@ class TestingPrioritasiNF extends CI_Controller {
         $prioritas_nf = $this->stub_hitungPrioritasNF($input_perbandingan_nf, $input_dom, $jumlah_nf);
 
         //untuk update nilai prioritas pada database
-        for($x=0; $x<$jumlah_nf; $x++){
+        for($x=0; $x < $jumlah_nf; $x++){
             echo $this->stub_updatePrioritas($id_nf[$x], $prioritas_nf[$x]);
         }
 

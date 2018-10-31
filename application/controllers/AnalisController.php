@@ -23,6 +23,7 @@ class AnalisController extends CI_Controller {
 	{        
         $data['fungsionals'] = $this->daftarFungsional->getAllDesc();
         $data['kodeBaru'] = $this->daftarFungsional->getKodeBaru();
+        // $data['waktuKumulatif'] = $this->daftarFungsional->waktuKumulatif();
         $this->load->view('elements/headerMtr');
         $this->load->view('kebutuhan/kebutuhanfMtr', $data);
         $this->load->view('elements/footerMtr');
@@ -119,7 +120,10 @@ class AnalisController extends CI_Controller {
         $input_perbandingan_nf = $this->input->post('kepentingan');
         $input_dom = $this->input->post('dom');
 
-        $prioritas_nf = $this->hitungPrioritasNF($input_perbandingan_nf, $input_dom, $jumlah_nf);
+        print_r($input_perbandingan_nf);
+        print_r($input_dom);
+        echo "<br>";
+        print_r($prioritas_nf = $this->hitungPrioritasNF($input_perbandingan_nf, $input_dom, $jumlah_nf));
 
         //untuk update nilai prioritas pada database
         for($x=0; $x<$jumlah_nf; $x++){
@@ -127,10 +131,10 @@ class AnalisController extends CI_Controller {
         }
 
         //load view untuk menampilkan hasil prioritas
-        $nf['nonfungsionals'] = $this->daftarNonfungsional->getAllDesc();
-        $this->load->view('elements/headerMtr');
-        $this->load->view('prioritasi/hasilnfMtr', $nf);
-        $this->load->view('elements/footerMtr');
+        // $nf['nonfungsionals'] = $this->daftarNonfungsional->getAllDesc();
+        // $this->load->view('elements/headerMtr');
+        // $this->load->view('prioritasi/hasilnfMtr', $nf);
+        // $this->load->view('elements/footerMtr');
     }
 
     public function showHalamanPrioritasiF()

@@ -61,4 +61,11 @@ class DaftarKebutuhanFungsional extends CI_Model {
         return $kode_baru;
     }
 
+        // public function waktuKumulatif(){
+        //         $this->db->select('waktu');
+        //         $this->db->from('fungsionals');
+        //         $this->db->order_by("prioritas", "DESC");
+        //         $query = $this->db->get();
+        //         return $query->result(); 
+        // }
 }

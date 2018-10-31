@@ -21,7 +21,13 @@
                     <p>
                         Dalam penentuan prioritas kebutuhan non-fungsional digunakan skala AHP (Analyctilcal Hierarchy process) Saaty.
                     </p>
-                    <img class="responsive-img" src="assets/tutorial/skalaSaaty.jpg">
+                    <!-- <?php $image = array(
+                        'src' => base_url('assets/tutorial/skalaSaaty.jpg'),
+                        'width' => '500',
+                        'height' => '300' );
+                        
+                        echo img($image);?>  -->
+                        <img class="responsive-img" src="assets/tutorial/skalaSaaty.jpg">
                 </li>               
                 <li>
                     <p>

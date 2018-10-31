@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col s12 ">
         <div class="card" style="padding:1%;">
-            <h7><b>Skala Perbandingan Kepentingan</b></h7>
+            <h7><b>Skala Perbandingan</b></h7>
             <table>
                 <thead>
                     <tr>

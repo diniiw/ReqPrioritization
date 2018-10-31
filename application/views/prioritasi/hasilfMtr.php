@@ -7,23 +7,23 @@
             <th>Kode Kebutuhan</th>
             <th>Deskripsi Kebutuhan</th>
             <th>Waktu</th>
-            <!-- <th>Waktu Kumulatif</th> -->
+            <th>Waktu Kumulatif</th>
             <th>Biaya</th>
-            <!-- <th>Biaya Kumulatif</th> -->
+            <th>Biaya Kumulatif</th>
             <th>Nilai Prioritas</th>
         </thead>
         
         <tbody>
-        <?php $no = 1 ?>
+        <?php $no = 1; $waktu_k = 0; $biaya_k = 0; ?>
         <?php foreach ($fungsionals->result() as $fungsional) :?>
         <tr>
             <td> <?php echo $no++ ?> </td>
             <td> <?php echo $fungsional->kode ?> </td>
             <td> <?php echo $fungsional->deskripsi ?> </td>
             <td> <?php echo $fungsional->waktu ?> </td>
-            <!-- <td> <?php echo $fungsional->kum_waktu ?> </td> -->
+            <td> <?php $waktu_k = $waktu_k + $fungsional->waktu; echo $waktu_k; ?> </td>
             <td> <?php echo $fungsional->biaya ?> </td>
-            <!-- <td> <?php echo $fungsional->kum_biaya ?> </td> -->
+            <td> <?php $biaya_k = $biaya_k + $fungsional->biaya; echo $biaya_k; ?> </td>
             <td> <?php echo $fungsional->prioritas ?> </td>
         </tr>
         <?php endforeach ?>

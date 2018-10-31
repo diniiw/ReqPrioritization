@@ -93,6 +93,5 @@ $route['testHitungPrioritasF'] = 'testing/testinghitungprioritasf/test';
 //testing prosesPrioritasiNF
 $route['testProsesNF'] = 'testing/testingprioritasiNF/test';
 
-
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
