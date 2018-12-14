@@ -20,22 +20,22 @@ class DaftarKebutuhanNonfungsional extends CI_Model {
     }
 
     public function getAll(){
-        return $this->db->get('nonfungsionals');
+        return $this->db->get('nonfungsional');
     }
 
     public function getJumlahKebutuhan(){
-        $nf = $this->db->get('nonfungsionals');
+        $nf = $this->db->get('nonfungsional');
         return $nf->num_rows();
     }
 
     public function getAllDesc(){
         $this->db->order_by('prioritas', 'DESC');
-        return $this->db->get('nonfungsionals');
+        return $this->db->get('nonfungsional');
     }
 
     public function getArrayID(){
         $this->db->select('id');
-        $query = $this->db->get('nonfungsionals');
+        $query = $this->db->get('nonfungsional');
         $id_raw = $query->result_array();
         $id_f = array();
         for($i = 0; $i<$this->getJumlahKebutuhan(); $i++){
@@ -46,7 +46,7 @@ class DaftarKebutuhanNonfungsional extends CI_Model {
 
     public function getArrayProritasNF(){
         $this->db->select('prioritas');
-        $query = $this->db->get('nonfungsionals');
+        $query = $this->db->get('nonfungsional');
         $pri_raw = $query->result_array();
         $prioritas_nf = array();
         for($i = 0; $i<$this->getJumlahKebutuhan(); $i++){
@@ -58,7 +58,7 @@ class DaftarKebutuhanNonfungsional extends CI_Model {
     public function getKodeMax(){
         //ambil kode maximal
         $this->db->select_max('kode');
-        $result = $this->db->get('nonfungsionals')->row();  
+        $result = $this->db->get('nonfungsional')->row();  
         return $result->kode;
     }
 

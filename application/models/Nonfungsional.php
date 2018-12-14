@@ -5,17 +5,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Nonfungsional extends Kebutuhan {
 
+    protected $id = 0;
     protected $kode = " ";
     protected $deskripsi = " ";
     protected $prioritas = 0.0;
 
     public function getKebutuhan($id){
         $this->db->where('id', $id);
-        return $this->db->get('nonfungsionals');
+        return $this->db->get('nonfungsional');
     }
 
     public function getJumlahKebutuhan(){
-        $nonfungsionals = $this->db->get('nonfungsionals');
+        $nonfungsionals = $this->db->get('nonfungsional');
         return $nonfungsionals->num_rows();
     }
 
@@ -48,7 +49,7 @@ class Nonfungsional extends Kebutuhan {
             'kode' => $this->kode,
             'deskripsi' => $this->deskripsi
         );
-        $query = $this->db->insert('nonfungsionals', $data);
+        $query = $this->db->insert('nonfungsional', $data);
         if($query){
             return true;
         }
@@ -60,21 +61,18 @@ class Nonfungsional extends Kebutuhan {
             'deskripsi' => $this->deskripsi
         );
         $this->db->where('id', $id);
-        $this->db->update('nonfungsionals', $data);
+        $this->db->update('nonfungsional', $data);
     }
 
     public function hapusKebutuhan($id){
         $this->db->where('id', $id);
-        $this->db->delete('nonfungsionals');
+        $this->db->delete('nonfungsional');
     }
 
     public function updatePrioritas($id, $prioritas){
         $data = array('prioritas'=> $prioritas);
         $this->db->where('id', $id);
-        $query = $this->db->update('nonfungsionals', $data);
-        if($query){
-            return true;
-        }
+        $this->db->update('nonfungsional', $data);
     }
 
 }

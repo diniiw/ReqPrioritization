@@ -49,6 +49,7 @@
         <center><a class="btn waves-effect" href="<?php echo base_url(); ?>kebutuhanFungsional">Kebutuhan Fungsional</a></center>
     </div>
 <?php  else : ?>
+    <?php $x = 0; $y = 0; ?>
     <div class="col s12 ">
     <form action="<?php echo base_url(); ?>prosesprioritasif" method="post">
         <?php foreach ($fungsionals->result() as $index_f => $fungsional) :?>
@@ -65,31 +66,16 @@
                     <li style="list-style-type: none;">
                         <?php echo $nonfungsional->kode ?>
                         <?php echo $nonfungsional->deskripsi ?>
-
                         <br>
                         <div class="input-field col s3">
                             <input name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" id="value" type="number" min="1" max="5" class="validate" required>
                             <label for="value">Nilai Kepentingan</label>
-                            <!-- <span class="helper-text" data-error="wrong" data-success="right">Helper text</span> -->
-                        </div>
-
-                        <!-- <div class = "row">
-                            <label>Kepentingan</label>
-                                <select>
-                                    <option name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" value = "" disabled selected>Nilai Kepetingan</option>
-                                    <option name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" value = "1">1</option>
-                                    <option name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" value = "2">2</option>
-                                    <option name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" value = "3">2</option>
-                            </select>
-                            </div> -->
-                    
-                        <!-- <div class="input-field col s6">
-                        <input id="nilai_p" type="text" class="validate">
-                        <label for="nilai_p">Nilai Kepentingan</label>
-                        </div> -->
-                        
+                            <input type="hidden" name="idf[<?php echo $x; ?>]" value="<?php echo $fungsional->id; ?>">
+                            <input type="hidden" name="idnf[<?php echo $y; ?>]" value="<?php echo $nonfungsional->id; ?>">
+                        </div>                        
                     </li>
                 </div>
+                <?php $x++; $y++; ?>
             <?php endforeach ?>
         </div>
         <?php endforeach ?>

@@ -36,11 +36,6 @@
                     <button type="submit" name="editf" class="btn-flat"><i class="material-icons">edit</i></button>
                 </form>
 
-                <!-- <form action="<?php echo base_url(); ?>deleteF/<?php echo $fungsi->id; ?>" method="post">
-                    <button type="submit" name="destroyf" class="btn-flat"><i class="material-icons">delete</i></button> -->
-                    <!-- <input type="hidden" name="_method" value="DELETE">                     -->
-    <!-- <a class="waves-effect waves-light btn modal-trigger" href="#tambahF">Tambah Kebutuhan Fungsional</a> -->
-                <!-- </form> -->
                 <button class="btn-flat modal-trigger" href="#deletef"><i class="material-icons">delete</i></button>
 
             </td>
@@ -71,12 +66,15 @@
                     <div class="input-field" col s6>
                         <input id="time" name="waktu_f" type="number" class="validate" required>
                         <label for="time">Estimasi Waktu untuk Implementasi Kebutuhan</label>
+                        //tamabahin keterangan satuannya hari
+                        //gausah pakai pull down, tapi bisa numerik semua, desimal dan agka biasa
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field" col s6>
                         <input id="cost" name="biaya_f" type="number" class="validate" required>
                         <label for="cost">Estimasi Biaya untuk Implementasi Kebutuhan</label>
+                        //tambahi keterangan satuan rupiah
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ include "Kebutuhan.php";
 
 class Fungsional extends Kebutuhan {
 
+        protected $id = 0;
         protected $kode = " ";
         protected $deskripsi = " ";
         protected $waktu = 0.0;
@@ -13,7 +14,7 @@ class Fungsional extends Kebutuhan {
 
         public function getKebutuhan($id){
                 $this->db->where('id', $id);
-                return $this->db->get('fungsionals');
+                return $this->db->get('fungsional');
         }
 
         public function setKode($kode){
@@ -64,7 +65,7 @@ class Fungsional extends Kebutuhan {
                         'biaya' => $this->biaya
                 );
 
-                $this->db->insert('fungsionals', $data);
+                $this->db->insert('fungsional', $data);
         }
 
         public function updateKebutuhan($id){
@@ -75,26 +76,18 @@ class Fungsional extends Kebutuhan {
                         'biaya' => $this->biaya
                 );
                 $this->db->where('id', $id);
-                $this->db->update('fungsionals', $data);
+                $this->db->update('fungsional', $data);
         }
 
         public function hapusKebutuhan($id){
                 $this->db->where('id', $id);
-                $this->db->delete('fungsionals');
+                $this->db->delete('fungsional');
         }
 
         public function updatePrioritas($id, $prioritas){
                 $data = array('prioritas'=> $prioritas);
                 $this->db->where('id', $id);
-                $this->db->update('fungsionals', $data);
+                $this->db->update('fungsional', $data);
         }
-
-        // public function waktuKumulatif(){
-        //         $this->db->select('waktu');
-        //         $this->db->from('fungsionals');
-        //         $this->db->order_by("prioritas", "DESC");
-        //         $query = $this->db->get();
-        //         return $query->result(); 
-        // }
 
 }

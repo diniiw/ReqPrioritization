@@ -20,17 +20,17 @@ class DaftarKebutuhanFungsional extends CI_Model {
     }
 
     public function getAll(){
-        return $this->db->get('fungsionals');
+        return $this->db->get('fungsional');
     }
 
     public function getAllDesc(){
         $this->db->order_by('prioritas', 'DESC');
-        return $this->db->get('fungsionals');
+        return $this->db->get('fungsional');
     }
 
     public function getArrayID(){
         $this->db->select('id');
-        $query = $this->db->get('fungsionals');
+        $query = $this->db->get('fungsional');
         $id_raw = $query->result_array();
         $id_f = array();
         for($i = 0; $i<$this->getJumlahKebutuhan(); $i++){
@@ -40,14 +40,14 @@ class DaftarKebutuhanFungsional extends CI_Model {
     }
 
     public function getJumlahKebutuhan(){
-        $fungsionals = $this->db->get('fungsionals');
+        $fungsionals = $this->db->get('fungsional');
         return $fungsionals->num_rows();
     }
 
     public function getKodeMax(){
         //ambil kode maximal
         $this->db->select_max('kode');
-        $result = $this->db->get('fungsionals')->row();  
+        $result = $this->db->get('fungsional')->row();  
         return $result->kode;
     }
       
@@ -61,11 +61,4 @@ class DaftarKebutuhanFungsional extends CI_Model {
         return $kode_baru;
     }
 
-        // public function waktuKumulatif(){
-        //         $this->db->select('waktu');
-        //         $this->db->from('fungsionals');
-        //         $this->db->order_by("prioritas", "DESC");
-        //         $query = $this->db->get();
-        //         return $query->result(); 
-        // }
 }

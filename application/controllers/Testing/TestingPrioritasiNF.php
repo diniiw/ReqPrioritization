@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TestingPrioritasiNF extends CI_Controller {
 
-    // private function stub_getJumlahKebutuhan(){
-    //     return 3;
-    // }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library("unit_test");
+    }
 
     private function stub_getJumlahKebutuhan(){
         return 3;
@@ -24,14 +26,14 @@ class TestingPrioritasiNF extends CI_Controller {
     }
 
     private function stub_updatePrioritas($id, $prioritas){
-        return "Update prioritas kebutuhan id : " . $id . " dengan nilai prioritas : " . $prioritas . "<br>";
+        return true;
     }
 
     private function stub_getAllDesc(){
-        return "Data kebutuhan non-fungsional berurutan dari prioritas tertinggi ke prioritas terendah";
+        return true;
     }
 
-    public function prosesPrioritasiNF()
+    private function prosesPrioritasiNF()
     {
         $jumlah_nf = $this->stub_getJumlahKebutuhan();
         $id_nf = $this->stub_getArrayID();  
@@ -43,14 +45,18 @@ class TestingPrioritasiNF extends CI_Controller {
 
         //untuk update nilai prioritas pada database
         for($x=0; $x < $jumlah_nf; $x++){
-            echo $this->stub_updatePrioritas($id_nf[$x], $prioritas_nf[$x]);
+            $this->stub_updatePrioritas($id_nf[$x], $prioritas_nf[$x]);
         }
 
         //load view untuk menampilkan hasil prioritas
-        echo $this->stub_getAllDesc();
+        return $this->stub_getAllDesc();
     }
 
     public function test(){
-        $this->prosesPrioritasiNF();
+        echo "Pengujian Unit Method prosesPrioritasiNF";
+        $test_name = "prosesPrioritasiNF";
+        $test = $this->prosesPrioritasiNF();;
+        $expected_result = true;
+        echo $this->unit->run($test, $expected_result, $test_name);
     }
 }

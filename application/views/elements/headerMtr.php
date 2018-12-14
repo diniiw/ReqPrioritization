@@ -62,8 +62,10 @@
             <li class="bold"><a href="<?php echo base_url(); ?>" class="waves-effect waves-teal">Tutorial</a></li>
             <li class="bold"><a class="waves-effect waves-teal" disabled>Daftar Kebutuhan</a>
                 <ul>
-                    <li class="bold"><a href="<?php echo base_url(); ?>kebutuhanFungsional" class="waves-effect waves-teal">Kebutuhan Fungsional</a>
-                    <li class="bold"><a href="<?php echo base_url(); ?>kebutuhanNonfungsional" class="waves-effect waves-teal">Kebutuhan Non-fungsional</a>
+                    <!-- <li class="bold"><a href="<?php echo base_url(); ?>kebutuhanFungsional" class="waves-effect waves-teal">Kebutuhan Fungsional</a>
+                    <li class="bold"><a href="<?php echo base_url(); ?>kebutuhanNonfungsional" class="waves-effect waves-teal">Kebutuhan Non-fungsional</a> -->
+                    <li class="bold"><a href="<?php echo site_url("AnalisController/showFungsional"); ?>" class="waves-effect waves-teal">Kebutuhan Fungsional</a>
+                    <li class="bold"><a href="<?php echo site_url("AnalisController/showNonfungsional"); ?>" class="waves-effect waves-teal">Kebutuhan Non-fungsional</a>
                     
                 </ul>
             </li>

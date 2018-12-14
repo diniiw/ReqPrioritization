@@ -23,11 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://localhost/ReqPrioritization'; // umumnya pakai ini
+$config['base_url'] = 'http://localhost/ReqPrioritization'; // umumnya pakai ini
 
-$root = "http://".$_SERVER['HTTP_HOST'];
-$root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-$config['base_url'] = "$root"; //pakai ini supaya lebih mudah kalau ganti komputer atau masuk ke server lain
+// $root = "http://".$_SERVER['HTTP_HOST'];
+// $root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+// $config['base_url'] = "$root"; //pakai ini supaya lebih mudah kalau ganti komputer atau masuk ke server lain
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ $config['base_url'] = "$root"; //pakai ini supaya lebih mudah kalau ganti komput
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

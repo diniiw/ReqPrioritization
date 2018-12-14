@@ -51,7 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'analiscontroller';
 
-$route['tutorial'] = 'analiscontroller/showTutorial';
 $route['kebutuhanFungsional'] = 'analiscontroller/showFungsional';
 $route['kebutuhanNonfungsional'] = 'analiscontroller/showNonfungsional';
 
@@ -71,27 +70,10 @@ $route['prioritasiNonfungsional'] = 'analiscontroller/showHalamanPrioritasiNF';
 $route['prioritasiFungsional'] = 'analiscontroller/showHalamanPrioritasiF';
 
 $route['prosesprioritasinf'] = 'analiscontroller/prosesPrioritasiNF';
-// $route['hasilprioritasinf'] = 'analiscontroller/showHasilNF';
+$route['hasilprioritasinf'] = 'analiscontroller/showHasilNF';
 
 $route['prosesprioritasif'] = 'analiscontroller/prosesPrioritasiF';
-// $route['hasilprioritasif'] = 'analiscontroller/showHasilF';
-
-//testing buatMatriksPerbandingan
-$route['testMatriks'] = 'testing/testingmatrikscontroller/test';
-//testing getKodeBaru
-$route['testKodeBaru'] = 'testing/testingkodebaru/test';
-//testing updatePrioritas
-$route['testUpdatePrioritas'] = 'testing/testingupdateprioritas/test';
-
-//testing updatePrioritas
-$route['testHitungPrioritasNF'] = 'testing/testinghitungprioritas/test';
-
-
-//testing hitungPrioritaF
-$route['testHitungPrioritasF'] = 'testing/testinghitungprioritasf/test';
-
-//testing prosesPrioritasiNF
-$route['testProsesNF'] = 'testing/testingprioritasiNF/test';
+$route['hasilprioritasif'] = 'analiscontroller/showHasilF';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
