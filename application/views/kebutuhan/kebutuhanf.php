@@ -65,16 +65,16 @@
                 <div class="row">
                     <div class="input-field" col s6>
                         <input id="time" name="waktu_f" type="number" class="validate" required>
-                        <label for="time">Estimasi Waktu untuk Implementasi Kebutuhan</label>
-                        //tamabahin keterangan satuannya hari
-                        //gausah pakai pull down, tapi bisa numerik semua, desimal dan agka biasa
+                        <label for="time">Estimasi Waktu untuk Implementasi Kebutuhan (hari)</label>
+                        <!-- //tamabahin keterangan satuannya hari
+                        //gausah pakai pull down, tapi bisa numerik semua, desimal dan agka biasa -->
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field" col s6>
                         <input id="cost" name="biaya_f" type="number" class="validate" required>
-                        <label for="cost">Estimasi Biaya untuk Implementasi Kebutuhan</label>
-                        //tambahi keterangan satuan rupiah
+                        <label for="cost">Estimasi Biaya untuk Implementasi Kebutuhan (Rp)</label>
+                        <!-- //tambahi keterangan satuan rupiah -->
                     </div>
                 </div>
             </div>

@@ -24,6 +24,6 @@ abstract class Kebutuhan extends CI_Model {
 
     abstract protected function updateKebutuhan($id);
 
-    abstract protected function updatePrioritas($id, $prioritas); //di setPrioritas aja
+    abstract protected function updatePrioritas($id, $prioritas); //di setPrioritas aja  
 
 }

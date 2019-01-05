@@ -1,16 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// include "NilaiPerbandingan.php";
+
 class NilaiPerbandinganNF extends NilaiPerbandingan {
 
     protected $id = 0;
     protected $id_nf_utama = 0;
     protected $id_nf_pembanding = 0;
     protected $nilai = 0;
-    protected $dominan = "";
+    protected $dominan = " - ";
 
     public function setID_NF_utama($id_nf_utama){
-        $this->id_nf = $id_nf_utama;
+        $this->id_nf_utama = $id_nf_utama;
     }
 
     public function getID_NF_utama(){
@@ -18,7 +20,7 @@ class NilaiPerbandinganNF extends NilaiPerbandingan {
     }
 
     public function setID_NF_pembanding($id_nf_pembanding){
-        $this->id_nf = $id_nf_pembanding;
+        $this->id_nf_pembanding = $id_nf_pembanding;
     }
 
     public function getID_NF_pembanding(){
@@ -35,6 +37,7 @@ class NilaiPerbandinganNF extends NilaiPerbandingan {
             'id_nf_pembanding' => $id_nf_pembanding
         );
         $where = array('id_nf_utama' => $id_nf_utama , 'id_nf_pembanding' => $id_nf_pembanding);
+        $this->db->select('nilai');
         $this->db->where($where);
         return $this->db->get('nilaiperbandingannf');
     }
@@ -49,18 +52,27 @@ class NilaiPerbandinganNF extends NilaiPerbandingan {
             'id_nf_pembanding' => $id_nf_pembanding
         );
         $where = array('id_nf_utama' => $id_nf_utama , 'id_nf_pembanding' => $id_nf_pembanding);
+        $this->db->select('dominan');
         $this->db->where($where);
         return $this->db->get('nilaiperbandingannf');
     }
 
-    public function tambahdata($id_nf_utama, $id_nf_pembanding, $nilai, $dom){
+    public function getAll(){
+        return $this->db->get('nilaiperbandingannf');
+    }
+
+    public function tambahdata(){
         $data = array(
-            'id_nf_utama' => $id_nf_utama,
-            'id_nf_pembanding' => $id_nf_pembanding,
-            'nilai' => $nilai,
-            'dominan' => $dom
+            'id_nf_utama' => $this->id_nf_utama,
+            'id_nf_pembanding' => $this->id_nf_pembanding,
+            'nilai' => $this->nilai,
+            'dominan' => $this->dominan
         );
         $this->db->insert('nilaiperbandingannf', $data);
+    }
+
+    public function hapusData(){
+        $this->db->empty_table('nilaiperbandingannf');
     }
     
     public function getData($id_nf_utama, $id_nf_pembanding){
@@ -71,9 +83,5 @@ class NilaiPerbandinganNF extends NilaiPerbandingan {
         $where = array('id_nf_utama' => $id_nf_utama , 'id_nf_pembanding' => $id_nf_pembanding);
         $this->db->where($where);
         return $this->db->get('nilaiperbandingannf');
-    }
-
-    public function hapusData(){
-        $this->db->empty_table('nilaiperbandingannf');
     }
 }

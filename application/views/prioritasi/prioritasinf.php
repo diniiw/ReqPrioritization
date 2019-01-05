@@ -1,5 +1,5 @@
 <div class="row">
-    <center><h4><b>Prioritasi Kebutuhan Non-Fungsional</b></h4></center>
+    <center><h4><b>Penentuan Prioritas Kebutuhan Non-Fungsional</b></h4></center>
 </div>
 
 <div class="row">
@@ -56,6 +56,7 @@
         <center><a class="btn waves-effect" href="<?php echo base_url(); ?>kebutuhanNonfungsional">Kebutuhan Non-fungsional</a></center>
     </div>
 <?php  else : ?>
+    <?php $x = 0; $y = 0; ?>
     <!-- Jika ada kebutuhan non-fungsional -->
     <form action="<?php echo base_url(); ?>prosesprioritasinf" method="post">
     <!-- Untuk Kode dan Deskripsi kebutuhan yang mau dibandingkan -->
@@ -81,7 +82,8 @@
                                 <div class="input-field col s3">
                                     <input name="kepentingan[<?php echo $index1;?>][<?php echo $index;?>]" id="value" type="number" min="1" max="9" class="validate" required>
                                     <label for="value">Nilai Kepentingan</label>
-                                    <!-- <span class="helper-text" data-error="wrong" data-success="right">Helper text</span> -->
+                                    <input type="hidden" name="id_nf_utama[<?php echo $x; ?>]" value="<?php echo $nf->id; ?>">
+                                    <input type="hidden" name="id_nf_pembanding[<?php echo $y; ?>]" value="<?php echo $nf2->id; ?>">
                                 </div>        
                             <br>  
                                 
@@ -95,8 +97,9 @@
                         </li>
                     <!-- </div> -->
                     </div>
-                        <!-- <br><br> -->
-                    <?php endif ?>
+                        <!-- <br><br> -->                  
+                <?php $x++; $y++; ?>
+                    <?php endif ?>  
                 <?php endforeach?>
             </div>
         </div>

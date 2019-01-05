@@ -7,8 +7,8 @@ class DaftarKebutuhanFungsional extends CI_Model {
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('Fungsional');
-        $this->fungsional = new Fungsional();
+        $this->load->model('Kebutuhanfungsional');
+        $this->fungsional = new Kebutuhanfungsional();
     }
 
     public function setFungsional($fungsional){
@@ -20,17 +20,17 @@ class DaftarKebutuhanFungsional extends CI_Model {
     }
 
     public function getAll(){
-        return $this->db->get('fungsional');
+        return $this->db->get('kebutuhanfungsional');
     }
 
     public function getAllDesc(){
         $this->db->order_by('prioritas', 'DESC');
-        return $this->db->get('fungsional');
+        return $this->db->get('kebutuhanfungsional');
     }
 
     public function getArrayID(){
         $this->db->select('id');
-        $query = $this->db->get('fungsional');
+        $query = $this->db->get('kebutuhanfungsional');
         $id_raw = $query->result_array();
         $id_f = array();
         for($i = 0; $i<$this->getJumlahKebutuhan(); $i++){
@@ -40,14 +40,14 @@ class DaftarKebutuhanFungsional extends CI_Model {
     }
 
     public function getJumlahKebutuhan(){
-        $fungsionals = $this->db->get('fungsional');
+        $fungsionals = $this->db->get('kebutuhanfungsional');
         return $fungsionals->num_rows();
     }
 
     public function getKodeMax(){
         //ambil kode maximal
         $this->db->select_max('kode');
-        $result = $this->db->get('fungsional')->row();  
+        $result = $this->db->get('kebutuhanfungsional')->row();  
         return $result->kode;
     }
       

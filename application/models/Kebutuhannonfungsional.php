@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // include "Kebutuhan.php";
 
-class Nonfungsional extends Kebutuhan {
+class Kebutuhannonfungsional extends Kebutuhan {
 
     protected $id = 0;
     protected $kode = " ";
@@ -49,10 +49,8 @@ class Nonfungsional extends Kebutuhan {
             'kode' => $this->kode,
             'deskripsi' => $this->deskripsi
         );
-        $query = $this->db->insert('nonfungsional', $data);
-        if($query){
-            return true;
-        }
+        $this->db->insert('nonfungsional', $data);
+
     }
 
     public function updateKebutuhan($id){
@@ -73,6 +71,7 @@ class Nonfungsional extends Kebutuhan {
         $data = array('prioritas'=> $prioritas);
         $this->db->where('id', $id);
         $this->db->update('nonfungsional', $data);
+        // return true;
     }
 
 }

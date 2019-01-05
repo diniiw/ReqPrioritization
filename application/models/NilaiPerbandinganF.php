@@ -26,7 +26,7 @@ class NilaiPerbandinganF extends NilaiPerbandingan {
         return $this->id_nf;
     }
 
-    public function set_nilai($nilai){
+    public function setNilai($nilai){
         $this->nilai = $nilai;
     }
 
@@ -41,14 +41,18 @@ class NilaiPerbandinganF extends NilaiPerbandingan {
     }
 
     public function getAll(){
-        return $this->db->get('NilaiPerbandinganF');
+        $this->db->select('nilaiperbandinganf.* , fungsional.id, nonfungsional.id');
+        $this->db->from('nilaiperbandinganf');
+        $this->db->join('fungsional', "fungsional.id = nilaiperbandinganf.id_f", 'left');
+        $this->db->join('nonfungsional', "nonfungsional.id = nilaiperbandinganf.id_nf", 'left');
+        return $this->db->get();
     }
 
-    public function tambahData($id_f, $id_nf, $nilai){
+    public function tambahData(){
         $data = array(
-            'id_f' => $id_f,
-            'id_nf' => $id_nf,
-            'nilai' => $nilai
+            'id_f' => $this->id_f,
+            'id_nf' => $this->id_nf,
+            'nilai' => $this->nilai
         );
         $this->db->insert('nilaiperbandinganf', $data);
     }

@@ -7,8 +7,8 @@ class DaftarKebutuhanNonfungsional extends CI_Model {
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('Nonfungsional');
-        $this->nonfungsional = new Nonfungsional();
+        $this->load->model('Kebutuhannonfungsional');
+        $this->nonfungsional = new Kebutuhannonfungsional();
     }
 
     public function setNonFungsional($nonfungsional){
@@ -20,22 +20,23 @@ class DaftarKebutuhanNonfungsional extends CI_Model {
     }
 
     public function getAll(){
-        return $this->db->get('nonfungsional');
+        return $this->db->get('Kebutuhannonfungsional');
     }
 
     public function getJumlahKebutuhan(){
-        $nf = $this->db->get('nonfungsional');
+        $nf = $this->db->get('Kebutuhannonfungsional');
         return $nf->num_rows();
     }
 
     public function getAllDesc(){
         $this->db->order_by('prioritas', 'DESC');
-        return $this->db->get('nonfungsional');
+        return $this->db->get('Kebutuhannonfungsional');
+        // return true;
     }
 
     public function getArrayID(){
         $this->db->select('id');
-        $query = $this->db->get('nonfungsional');
+        $query = $this->db->get('Kebutuhannonfungsional');
         $id_raw = $query->result_array();
         $id_f = array();
         for($i = 0; $i<$this->getJumlahKebutuhan(); $i++){
@@ -46,7 +47,7 @@ class DaftarKebutuhanNonfungsional extends CI_Model {
 
     public function getArrayProritasNF(){
         $this->db->select('prioritas');
-        $query = $this->db->get('nonfungsional');
+        $query = $this->db->get('Kebutuhannonfungsional');
         $pri_raw = $query->result_array();
         $prioritas_nf = array();
         for($i = 0; $i<$this->getJumlahKebutuhan(); $i++){
@@ -58,7 +59,7 @@ class DaftarKebutuhanNonfungsional extends CI_Model {
     public function getKodeMax(){
         //ambil kode maximal
         $this->db->select_max('kode');
-        $result = $this->db->get('nonfungsional')->row();  
+        $result = $this->db->get('Kebutuhannonfungsional')->row();  
         return $result->kode;
     }
 

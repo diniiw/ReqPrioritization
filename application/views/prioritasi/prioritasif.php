@@ -1,5 +1,5 @@
 <div class="row">
-    <center><h4><b>Prioritasi Kebutuhan Fungsional</b></h4></center>
+    <center><h4><b>Penentuan Prioritas Kebutuhan Fungsional</b></h4></center>
 </div>
 
 <div class="row">
@@ -68,22 +68,22 @@
                         <?php echo $nonfungsional->deskripsi ?>
                         <br>
                         <div class="input-field col s3">
-                            <input name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" id="value" type="number" min="1" max="5" class="validate" required>
-                            <label for="value">Nilai Kepentingan</label>
-                            <input type="hidden" name="idf[<?php echo $x; ?>]" value="<?php echo $fungsional->id; ?>">
-                            <input type="hidden" name="idnf[<?php echo $y; ?>]" value="<?php echo $nonfungsional->id; ?>">
+                                <input name="kepentingan[<?php echo $index_f;?>][<?php echo $index_nf;?>]" id="value" type="number" min="1" max="5" class="validate" required>
+                                <label for="value">Nilai Kepentingan</label>
+                                <input type="hidden" name="idf[<?php echo $x; ?>]" value="<?php echo $fungsional->id; ?>">
+                                <input type="hidden" name="idnf[<?php echo $y; ?>]" value="<?php echo $nonfungsional->id; ?>">
                         </div>                        
                     </li>
                 </div>
                 <?php $x++; $y++; ?>
             <?php endforeach ?>
         </div>
-        <?php endforeach ?>
+        <?php endforeach ?>        
+    
         <div class="row">
             <button type="submit" name="selesai" class="btn waves-effect" style="margin-left:88%;">Selesai</button>
         </div>
     </form>
     </div>
-<?php endif 
-?>
+<?php endif ?>
 </div>

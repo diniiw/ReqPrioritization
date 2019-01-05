@@ -18,27 +18,27 @@ class AnalisController extends CI_Controller {
 
 	public function index()
 	{
-        $this->load->view('elements/headerMtr');
-        $this->load->view('kebutuhan/tutorial');
-        $this->load->view('elements/footerMtr');
+        $this->load->view('elements/header');
+        $this->load->view('index');
+        $this->load->view('elements/footer');
     }	
     
     public function showFungsional()
 	{        
         $data['fungsionals'] = $this->daftarFungsional->getAllDesc();
         $data['kodeBaru'] = $this->daftarFungsional->getKodeBaru();
-        $this->load->view('elements/headerMtr');
-        $this->load->view('kebutuhan/kebutuhanfMtr', $data);
-        $this->load->view('elements/footerMtr');
+        $this->load->view('elements/header');
+        $this->load->view('kebutuhan/kebutuhanf', $data);
+        $this->load->view('elements/footer');
     }
 
     public function showNonfungsional()
 	{    
         $data['nonfungsionals'] = $this->daftarNonfungsional->getAllDesc();
         $data['kodeBaru'] = $this->daftarNonfungsional->getKodeBaru();
-        $this->load->view('elements/headerMtr');
-        $this->load->view('kebutuhan/kebutuhannfMtr', $data);
-        $this->load->view('elements/footerMtr');
+        $this->load->view('elements/header');
+        $this->load->view('kebutuhan/kebutuhannf', $data);
+        $this->load->view('elements/footer');
     }
 
     public function storeFungsional()
@@ -63,17 +63,17 @@ class AnalisController extends CI_Controller {
     public function editFungsional($id)
     {
         $data['fungsional'] = $this->daftarFungsional->getFungsional()->getKebutuhan($id);
-        $this->load->view('elements/headerMtr');
-        $this->load->view('kebutuhan/editFMtr', $data);
-        $this->load->view('elements/footerMtr');
+        $this->load->view('elements/header');
+        $this->load->view('kebutuhan/editF', $data);
+        $this->load->view('elements/footer');
     }
     
     public function editNonfungsional($id)
     {
         $data['nonfungsional'] = $this->daftarNonfungsional->getNonfungsional()->getKebutuhan($id);
-        $this->load->view('elements/headerMtr');
-        $this->load->view('kebutuhan/editNFMtr', $data);
-        $this->load->view('elements/footerMtr');
+        $this->load->view('elements/header');
+        $this->load->view('kebutuhan/editNF', $data);
+        $this->load->view('elements/footer');
     }
 
     public function updateFungsional($id)
@@ -110,9 +110,10 @@ class AnalisController extends CI_Controller {
     {
         $data['nonfungsionals'] = $this->daftarNonfungsional->getAll();
         $data['warning'] = "Tidak ada kebutuhan Non-fungsional. <br> Masukkan kebutuhan Non-fungsional terlebih dahulu. ";
-        $this->load->view('elements/headerMtr');
-        $this->load->view('prioritasi/prioritasinfMtr', $data);
-        $this->load->view('elements/footerMtr');
+        $data['nilai_perbandingan_nf'] = $this->nilaiPerbandinganNF->getAll();
+        $this->load->view('elements/header');
+        $this->load->view('prioritasi/prioritasinf', $data);
+        $this->load->view('elements/footer');
     }
 
     public function prosesPrioritasiNF()
@@ -123,6 +124,14 @@ class AnalisController extends CI_Controller {
         $input_perbandingan_nf = $this->input->post('kepentingan');
         $input_dom = $this->input->post('dom');
 
+        $id_nf_utama = $this->input->post('id_nf_utama');
+        $id_nf_pembanding = $this->input->post('id_nf_pembanding');
+
+        $np = array_reduce($input_perbandingan_nf, 'array_merge', array());
+        $dom = array_reduce($input_dom, 'array_merge', array());
+
+        $this->simpanPerbandinganNF($id_nf_utama, $id_nf_pembanding, $np, $dom);
+
         $prioritas_nf = $this->hitungPrioritasNF($input_perbandingan_nf, $input_dom, $jumlah_nf);
 
         //untuk update nilai prioritas pada database
@@ -132,9 +141,20 @@ class AnalisController extends CI_Controller {
 
         // load view untuk menampilkan hasil prioritas
         $nf['nonfungsionals'] = $this->daftarNonfungsional->getAllDesc();
-        $this->load->view('elements/headerMtr');
-        $this->load->view('prioritasi/hasilnfMtr', $nf);
-        $this->load->view('elements/footerMtr');
+        $this->load->view('elements/header');
+        $this->load->view('prioritasi/hasilnf', $nf);
+        $this->load->view('elements/footer');
+    }
+
+    public function simpanPerbandinganNF($id_nf_utama, $id_nf_pembanding, $nilaiperbandingan, $dom){
+        $this->nilaiPerbandinganNF->hapusData();
+        for($x = 0; $x < count($nilaiperbandingan); $x++){
+            $this->nilaiPerbandinganNF->setID_NF_utama($id_nf_utama[$x]);
+            $this->nilaiPerbandinganNF->setID_NF_pembanding($id_nf_pembanding[$x]);
+            $this->nilaiPerbandinganNF->setNilai($nilaiperbandingan[$x]);
+            $this->nilaiPerbandinganNF->setDominan($dom[$x]);
+            $this->nilaiPerbandinganNF->tambahdata();
+        }
     }
 
     public function showHalamanPrioritasiF()
@@ -142,9 +162,10 @@ class AnalisController extends CI_Controller {
         $data['nonfungsionals'] = $this->daftarNonfungsional->getAll();
         $data['fungsionals'] = $this->daftarFungsional->getAll();
         $data['warning'] = "Tidak ada kebutuhan Fungsional. <br> Masukkan kebutuhan Fungsional terlebih dahulu. ";
-        $this->load->view('elements/headerMtr');
-        $this->load->view('prioritasi/prioritasifMtr', $data);
-        $this->load->view('elements/footerMtr');
+        $data['npfs'] = $this->nilaiPerbandinganF->getAll();
+        $this->load->view('elements/header');
+        $this->load->view('prioritasi/prioritasif', $data);
+        $this->load->view('elements/footer');
     }
 
     public function prosesPrioritasiF()
@@ -159,14 +180,12 @@ class AnalisController extends CI_Controller {
         $idnf = $this->input->post('idnf');
         $np = array_reduce($nilai_perbandingan_f, 'array_merge', array());
 
-        // print_r($idf);
-        // echo "<br>";
-        // print_r($idnf);
-        // echo "<br>";
-        // print_r($np);
         $this->nilaiPerbandinganF->hapusData();
         for($x = 0; $x < count($np); $x++){
-            $this->nilaiPerbandinganF->tambahdata($idf[$x], $idnf[$x], $np[$x]);
+            $this->nilaiPerbandinganF->setID_F($idf[$x]);
+            $this->nilaiPerbandinganF->setID_NF($idnf[$x]);
+            $this->nilaiPerbandinganF->setNilai($np[$x]);
+            $this->nilaiPerbandinganF->tambahdata();
         }
 
         $prioritas_f = $this->hitungPrioritasF($nilai_perbandingan_f, $prioritas_nf, $jumlah_nf, $jumlah_f);
@@ -178,9 +197,24 @@ class AnalisController extends CI_Controller {
         
         //load view untuk menampilkan hasil prioritas 
         $f['fungsionals'] = $this->daftarFungsional->getAllDesc();
-        $this->load->view('elements/headerMtr');
-        $this->load->view('prioritasi/hasilfMtr', $f);
-        $this->load->view('elements/footerMtr');
+        $this->load->view('elements/header');
+        $this->load->view('prioritasi/hasilf', $f);
+        $this->load->view('elements/footer');
+    }
+
+    public function simpanPerbandinganF(){
+        $nilai_perbandingan_f = $this->input->post('kepentingan');
+        $idf = $this->input->post('idf');
+        $idnf = $this->input->post('idnf');
+        $np = array_reduce($nilai_perbandingan_f, 'array_merge', array());
+
+        $this->nilaiPerbandinganF->hapusData();
+        for($x = 0; $x < count($np); $x++){
+            $this->nilaiPerbandinganF->setID_F($idf[$x]);
+            $this->nilaiPerbandinganF->setID_NF($idnf[$x]);
+            $this->nilaiPerbandinganF->setNilai($np[$x]);
+            $this->nilaiPerbandinganF->tambahdata();
+        }
     }
 
     private function buatMatriksPerbandinganNF($input_perbandingan_nf, $input_dom, $jumlah_nf)

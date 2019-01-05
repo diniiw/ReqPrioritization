@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 include "Kebutuhan.php";
 
-class Fungsional extends Kebutuhan {
+class Kebutuhanfungsional extends Kebutuhan {
 
         protected $id = 0;
         protected $kode = " ";
@@ -66,6 +66,7 @@ class Fungsional extends Kebutuhan {
                 );
 
                 $this->db->insert('fungsional', $data);
+                // return true;
         }
 
         public function updateKebutuhan($id){

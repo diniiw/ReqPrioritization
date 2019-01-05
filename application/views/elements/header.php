@@ -59,7 +59,8 @@
 
         <!-- Menu sidebar -->
         <ul id="nav-mobile" class="sidenav sidenav-fixed" style="width: 18%;">
-            <li class="bold"><a href="<?php echo base_url(); ?>" class="waves-effect waves-teal">Tutorial</a></li>
+            <!-- <li class="bold"><a href="<?php echo base_url(); ?>" class="waves-effect waves-teal">Tutorial</a></li> -->
+            <li class="bold"><a href="<?php echo base_url(); ?>" class="waves-effect waves-teal"><center><img class="responsive-img" src="assets/home.png"></center></a></li>
             <li class="bold"><a class="waves-effect waves-teal" disabled>Daftar Kebutuhan</a>
                 <ul>
                     <!-- <li class="bold"><a href="<?php echo base_url(); ?>kebutuhanFungsional" class="waves-effect waves-teal">Kebutuhan Fungsional</a>
@@ -69,7 +70,7 @@
                     
                 </ul>
             </li>
-            <li class="bold"><a href="<?php echo base_url(); ?>prioritasiNonfungsional" class="waves-effect waves-teal">Prioritasi Kebutuhan</a></li>
+            <li class="bold"><a href="<?php echo base_url(); ?>prioritasiNonfungsional" class="waves-effect waves-teal">Penentuan Prioritas Kebutuhan</a></li>
         </ul>
         <!-- <a href="#" data-target="nav-mobile" class="sidenav-trigger waves-effect hide-on-large-only"><i class="material-icons">menu</i></a> -->
     </header>

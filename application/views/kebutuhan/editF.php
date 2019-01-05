@@ -17,13 +17,13 @@
                 <div class="row">
                     <div class="input-field" col s6>
                         <input id="time" name="waktu_f" type="text" class="validate" value="<?php echo $fungsi ->waktu; ?>">
-                        <label for="time">Estimasi Waktu Implementasi Kebutuhan</label>
+                        <label for="time">Estimasi Waktu Implementasi Kebutuhan (hari)</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field" col s6>
                         <input id="cost" name="biaya_f" type="text" class="validate" value="<?php echo $fungsi->biaya; ?>">
-                        <label for="cost">Estimasi Waktu Implementasi Kebutuhan</label>
+                        <label for="cost">Estimasi Waktu Implementasi Kebutuhan (Rp)</label>
                     </div>
                 </div>
             </div>

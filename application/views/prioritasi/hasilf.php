@@ -1,6 +1,6 @@
 <div class="row">
 <div class="col s12" id="fungsional">
-<h5>Hasil Prioritas Kebutuhan Fungsional</h5>
+<h5>Prioritas Kebutuhan Fungsional</h5>
     <table class="highlight">
         <thead>
             <th>No</th>
